@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 
+const { dbConnect } = require("./shared/db");
 const studentRoute = require("./routes/student");
 const mentorRoute = require("./routes/mentor");
 
@@ -16,6 +18,7 @@ app.get("/", (req, res) => {
 app.use("/student", studentRoute);
 app.use("/mentor", mentorRoute);
 
-app.listen("3000", () => {
+app.listen("3000", async () => {
+  await dbConnect();
   console.log("Started server");
 });
