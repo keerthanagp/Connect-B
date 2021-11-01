@@ -29,12 +29,4 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/", (req, res) => {
-  res.send("Student edit route");
-});
-
-router.delete("/", (req, res) => {
-  res.send("Student delete route");
-});
-
 module.exports = router;

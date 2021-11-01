@@ -4,7 +4,11 @@ const schema = mongoose.Schema;
 const dbConnect = async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://karthee:karthee@cluster0.aq26z.mongodb.net/eduHub?retryWrites=true&w=majority"
+      "mongodb+srv://karthee:karthee@cluster0.aq26z.mongodb.net/eduHub?retryWrites=true&w=majority",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
     );
     console.log("DB Connected");
   } catch (e) {
@@ -26,10 +30,6 @@ const studentSchema = schema({
     type: String,
     required: true,
   },
-  mentorAssigned: {
-    type: String,
-    default: null,
-  },
 });
 
 const student = mongoose.model("student", studentSchema, "student");
@@ -46,10 +46,6 @@ const mentorSchema = schema({
   },
   expertise: {
     type: String,
-    required: true,
-  },
-  studentsAssigned: {
-    type: Array,
     required: true,
   },
 });

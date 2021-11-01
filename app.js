@@ -5,6 +5,7 @@ require("dotenv").config();
 const { dbConnect } = require("./shared/db");
 const studentRoute = require("./routes/student");
 const mentorRoute = require("./routes/mentor");
+const assignMentortoStudent = require("./routes/assignMentortoStudent");
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 });
 app.use("/student", studentRoute);
 app.use("/mentor", mentorRoute);
+app.use("/assignmentor", assignMentortoStudent);
 
 app.listen(process.env.PORT || 3000, async (err) => {
   await dbConnect();
