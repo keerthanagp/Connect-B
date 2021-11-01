@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
+require("dotenv").config();
 
 const dbConnect = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://karthee:karthee@cluster0.aq26z.mongodb.net/eduHub?retryWrites=true&w=majority"
-    );
+    console.log(typeof process.env.DB_URL);
+    await mongoose.connect(process.env.DB_URL);
     console.log("DB Connected");
   } catch (e) {
     console.log(e.message, "error in connecting db");

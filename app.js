@@ -18,7 +18,10 @@ app.get("/", (req, res) => {
 app.use("/student", studentRoute);
 app.use("/mentor", mentorRoute);
 
-app.listen(process.env.PORT || 3000, async () => {
+app.listen(process.env.PORT || 3000, async (err) => {
   await dbConnect();
   console.log("Started server ");
+  if (err) {
+    console.log(err, "error in starting server");
+  }
 });
