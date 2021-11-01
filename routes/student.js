@@ -3,8 +3,14 @@ const router = express.Router();
 
 const { student } = require("../shared/db");
 
-router.get("/", (req, res) => {
-  res.send("get all Students");
+router.get("/", async (req, res) => {
+  console.log("get all Students");
+  try {
+    const data = await student.find();
+    res.send(data);
+  } catch (e) {
+    res.send(e);
+  }
 });
 
 router.post("/", async (req, res) => {
