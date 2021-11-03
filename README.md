@@ -14,11 +14,11 @@ Write API to create Mentor
 Write API to create Student
 </li>
 <li>
-    <ul>
+    <>
         Write API to Assign a student to Mentor
         <li>Select one mentor and Add multiple Student </li>
         <li>A student who has a mentor should not be shown in List</li>
-    </ul>
+    </>
 </li>
 <li>
     <ul>
