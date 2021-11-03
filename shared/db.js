@@ -8,6 +8,7 @@ const dbConnect = async () => {
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        autoIndex: true,
       }
     );
     console.log("DB Connected");
@@ -30,6 +31,11 @@ const studentSchema = schema({
     type: String,
     required: true,
   },
+  mentorAssigned: {
+    type: schema.Types.ObjectId,
+    default: null,
+    ref: "mentor",
+  },
 });
 
 const student = mongoose.model("student", studentSchema, "student");
@@ -48,6 +54,13 @@ const mentorSchema = schema({
     type: String,
     required: true,
   },
+  studentsAssigned: [
+    {
+      type: schema.Types.ObjectId,
+      ref: "student",
+      default: null,
+    },
+  ],
 });
 
 const mentor = mongoose.model("mentor", mentorSchema, "mentor");
