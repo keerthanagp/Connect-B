@@ -32,7 +32,7 @@ router.post("/newMentor", async (req, res) => {
 // ------------------------------------------------------------------------
 
 router.post("/modifyMentor", async (req, res) => {
-  //red has studentid and newMentorid
+  //req has studentid and newMentorid
   console.log("Select One Student and Assign one Mentor");
   try {
     //change mentorassigned to new value in students
@@ -42,7 +42,7 @@ router.post("/modifyMentor", async (req, res) => {
     stud.save();
     //todo : remove that student from oldmentor assignedlist and add in new mentor assignedlist
 
-    //change in oldmentor studentsAssigned list using filter mtd
+    //change in oldmentor studentsAssigned list 
     let oldment = await mentor.findById(oldMentorId);
 
     if (oldment.studentsAssigned.length < 0) {
