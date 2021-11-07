@@ -5,6 +5,8 @@
 Heroku Url : https://eduhub-karthee.herokuapp.com/
 <br>
 <br>
+linnk to FrontEnd : https://github.com/kar-thee/zen-assignment-web-dev-task-eduHub
+<br>
 <ul>
 TASK: 
 <li>
