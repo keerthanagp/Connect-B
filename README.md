@@ -5,13 +5,13 @@
 Heroku Url : https://eduhub-karthee.herokuapp.com/
 <br>
 <br>
-linnk to FrontEnd : https://github.com/kar-thee/zen-assignment-web-dev-task-eduHub
-<br>
+Link to FrontEnd : https://github.com/kar-thee/zen-assignment-web-dev-task-eduHub
+<br><br>
 <ul>
 TASK: 
 <li>
     
-    GET METHOD
+    POST METHOD
     Write API to create Mentor  -  
     https://eduhub-karthee.herokuapp.com/mentor
     
@@ -19,8 +19,24 @@ TASK:
 </li>
 <li>
     
-    GET METHOD
+    POST METHOD
     Write API to create Student  - 
+     https://eduhub-karthee.herokuapp.com/student
+    
+    
+</li>
+    <li>
+    
+    GET METHOD
+    Write API to read/get all Mentors  -  
+    https://eduhub-karthee.herokuapp.com/mentor
+    
+    
+</li>
+<li>
+    
+    GET METHOD
+    Write API to read/get all Students  - 
      https://eduhub-karthee.herokuapp.com/student
     
     
