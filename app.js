@@ -29,5 +29,3 @@ app.listen(process.env.PORT || 3000, async (err) => {
 });
 
 
-//username:Keerthana
-//password: KeerthanaPass

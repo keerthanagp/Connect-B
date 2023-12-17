@@ -5,17 +5,16 @@ const { student, mentor } = require("../shared/db");
 
 router.post("/newMentor", async (req, res) => {
   console.log("assignMentorToStudent");
-  //req -> has mentor id + studentsId
-  //to do : add students to mentor & viceversa
+  
   try {
-    //updating studentList in mentor doc
+   
     const mentorData = await mentor.findById(req.body.mentorId);
     mentorData.studentsAssigned = [
       ...mentorData.studentsAssigned,
       ...req.body.studentsArray,
     ];
     mentorData.save();
-    //adding mentor to all respective students
+    
     req.body.studentsArray.forEach(async (stud) => {
       const temp = await student.findById(stud);
       temp.mentorAssigned = req.body.mentorId;
@@ -32,17 +31,15 @@ router.post("/newMentor", async (req, res) => {
 // ------------------------------------------------------------------------
 
 router.post("/modifyMentor", async (req, res) => {
-  //req has studentid and newMentorid
+ 
   console.log("Select One Student and Assign one Mentor");
   try {
-    //change mentorassigned to new value in students
+    
     let stud = await student.findById(req.body.studentId);
-    const oldMentorId = stud.mentorAssigned; //save the oldmentor id for updating studAssignedList later
+    const oldMentorId = stud.mentorAssigned; 
     stud.mentorAssigned = req.body.newMentorId;
     stud.save();
-    //todo : remove that student from oldmentor assignedlist and add in new mentor assignedlist
-
-    //change in oldmentor studentsAssigned list 
+   
     let oldment = await mentor.findById(oldMentorId);
 
     if (oldment.studentsAssigned.length < 0) {
@@ -57,10 +54,10 @@ router.post("/modifyMentor", async (req, res) => {
       oldment.studentsAssigned = newAssigned;
     }
 
-    //filtering that one student and remove from studentList of mentor
+    
     oldment.save();
 
-    //add the studentid in newMentor studentsAssignedlist
+    
     let newment = await mentor.findById(req.body.newMentorId);
     if (newment.studentsAssigned.length < 0) {
       return;
@@ -85,13 +82,3 @@ router.post("/modifyMentor", async (req, res) => {
 
 module.exports = router;
 
-// const assignedStudents = ment.studentsAssigned;
-// const studList = [...assignedStudents, ...req.body.studentsArray];
-// const mentorData = await mentor.findByIdAndUpdate(
-//   req.body.mentorId,
-//   {
-//     studentsAssigned: studList,
-//   },
-//   { new: true }
-// ); // new:true , so we get updated result and not old result back
-// res.send(mentorData);
